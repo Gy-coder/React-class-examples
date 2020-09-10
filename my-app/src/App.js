@@ -4,23 +4,27 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      n: 0,
-      arr: [1, 2, 3, 4]
+      width: undefined
     }
+    this.divRef = React.createRef()
   }
   addN() {
     console.log('button被点击了')
     this.setState(state => ({
       n: state.n + 1
     }))
-
+  }
+  componentDidMount() {
+    const node = this.divRef.current;
+    const { width } = node.getBoundingClientRect()
+    // this.setState(state => ({
+    //   width: state.width
+    // }))
+    this.setState({ width })
   }
   render() {
-    let li = this.state.arr.map(item => <li>{item}</li>)
     return (
-      <ul>
-        {li}
-      </ul>
+      <div ref={this.divRef}>Hello , {this.state.width + 'px'}</div>
     )
   }
 }
