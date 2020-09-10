@@ -4,7 +4,8 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      n: 0
+      n: 0,
+      arr: [1, 2, 3, 4]
     }
   }
   addN() {
@@ -15,12 +16,11 @@ class App extends React.Component {
 
   }
   render() {
-    let message
+    let li = this.state.arr.map(item => <li>{item}</li>)
     return (
-      <div>
-        {this.state.n % 2 === 0 ? <div>偶数</div> : null}
-        <button onClick={() => { this.addN() }}>+1</button>
-      </div>
+      <ul>
+        {li}
+      </ul>
     )
   }
 }
