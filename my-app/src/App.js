@@ -16,19 +16,9 @@ class App extends React.Component {
   }
   render() {
     let message
-    console.log(this.state.n)
-    if (this.state.n % 2 === 0) {
-      message = (
-        <div>偶数</div>
-      )
-    } else {
-      message = (
-        <span>奇数</span>
-      )
-    }
     return (
       <div>
-        {message}
+        {this.state.n % 2 === 0 ? <div>偶数</div> : null}
         <button onClick={() => { this.addN() }}>+1</button>
       </div>
     )
