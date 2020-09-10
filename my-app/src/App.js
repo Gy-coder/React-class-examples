@@ -12,22 +12,23 @@ class App extends React.Component {
     this.setState(state => ({
       n: state.n + 1
     }))
-    this.setState(state => ({
-      n: state.n - 1
-    }))
-  }
-  shouldComponentUpdate(newProps, newState) {
-    if (newState.n === this.state.n) {
-      return false
-    } else {
-      return true
-    }
+
   }
   render() {
-    console.log('render执行了')
+    let message
+    console.log(this.state.n)
+    if (this.state.n % 2 === 0) {
+      message = (
+        <div>偶数</div>
+      )
+    } else {
+      message = (
+        <span>奇数</span>
+      )
+    }
     return (
       <div>
-        {this.state.n}
+        {message}
         <button onClick={() => { this.addN() }}>+1</button>
       </div>
     )
